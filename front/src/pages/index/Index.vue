@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" @click="routeToLogin">
     <div class="left">
       <el-button class="btn" round @click="clearCache">清除缓存</el-button>
       <el-button class="btn" round @click="checkNetwork">检测网络</el-button>
@@ -10,8 +10,8 @@
       <div style="width: 40px; height: 50px; display: inline-block"></div>
     </div>
   </div>
-  <div class="index-body">INDEX</div>
-  <div class="footer">
+  <div class="index-body" @click="routeToLogin">INDEX</div>
+  <div class="footer" @click="routeToLogin">
     <div class="diamond-wrapper">
       <div class="diamond">
         <div class="content">START</div>
@@ -23,7 +23,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { httpCheckNetwork } from "../../http/httpUtils";
+import { useRouter } from "vue-router";
 
+const route = useRouter();
 const version = ref("2.5.80");
 const clearCache = () => {
   // 清除缓存的逻辑
@@ -38,6 +40,10 @@ const checkNetwork = () => {
     .catch(() => {
       console.error("网络连接异常");
     });
+};
+const routeToLogin = () => {
+  // 路由跳转到登录页面
+  route.push("/login");
 };
 </script>
 
