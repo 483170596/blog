@@ -10,7 +10,13 @@
       <div style="width: 40px; height: 50px; display: inline-block"></div>
     </div>
   </div>
-  <div class="index-body" @click="routeToLogin">INDEX</div>
+  <div class="index-body" @click="routeToLogin">
+    <img :src="bodyRes.url" :alt="bodyRes.title" />
+    <div class="overlay-text">
+      <div class="text-title">{{ bodyRes.title }}</div>
+      <div class="text-description">{{ bodyRes.description }}</div>
+    </div>
+  </div>
   <div class="footer" @click="routeToLogin">
     <div class="diamond-wrapper">
       <div class="diamond">
@@ -21,18 +27,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 import { httpCheckNetwork } from "../../http/httpUtils";
 import { useRouter } from "vue-router";
+import bodyStaticResource from "../../assets/pagesStaticReource/index/citiesAndDescription.json";
+import { getRandomInt } from "../../utils/common";
 
-const route = useRouter();
 const version = ref("2.5.80");
+
+const bodyResIdx = ref(getRandomInt(0, bodyStaticResource.length - 1));
+const intervalTime = 5000;
+let bodyResTimer: number | null = null;
+const bodyRes = computed(() => bodyStaticResource[bodyResIdx.value]);
+onMounted(() => {
+  bodyResTimer = setInterval(() => {
+    bodyResIdx.value = getRandomInt(0, bodyStaticResource.length - 1);
+  }, intervalTime);
+});
+onUnmounted(() => {
+  if (bodyResTimer) {
+    clearInterval(bodyResTimer);
+    bodyResTimer = null;
+  }
+});
+
 const clearCache = () => {
-  // 清除缓存的逻辑
   console.log("缓存已清除");
 };
+
 const checkNetwork = () => {
-  /* 检测网络的逻辑 */
   httpCheckNetwork()
     .then(() => {
       console.log("网络连接正常");
@@ -41,8 +64,9 @@ const checkNetwork = () => {
       console.error("网络连接异常");
     });
 };
+
+const route = useRouter();
 const routeToLogin = () => {
-  // 路由跳转到登录页面
   route.push("/login");
 };
 </script>
@@ -89,13 +113,76 @@ const routeToLogin = () => {
   font-size: 11px;
   line-height: 20px;
   text-align: start;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-family: sans-serif;
 }
 
 .index-body {
   width: 100%;
   height: 65%;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
+  position: relative;
+  overflow: hidden;
+}
+
+.index-body img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 用伪元素模拟上下两端渐变遮罩 */
+.index-body::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3%; /* 渐变区域高度，可按需调整 */
+  pointer-events: none;
+  z-index: 1;
+}
+.index-body::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 20%; /* 渐变区域高度，可按需调整 */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.index-body::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+}
+
+.index-body::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+}
+.overlay-text {
+  position: absolute;
+  bottom: 0; /* 贴父组件底部 */
+  left: 10%; /* 距离左边 20% */
+  width: 80%; /* 宽度为父组件的 80% */
+  margin-bottom: 10px; /* 距离底部 10px */
+  display: flex; /* 横向布局 */
+  gap: 1rem; /* 标题和描述之间间距 */
+  color: white;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  z-index: 2; /* 确保文字在图片上方 */
+}
+.text-title {
+  font-size: 1.5rem; /* 标题字体大小 */
+  font-weight: bold; /* 标题加粗 */
+  width: 10%; /* 标题宽度为父组件的 50% */
+  white-space: nowrap; /* 不换行 */
+  text-align: right; /* 居中对齐 */
+}
+.text-description {
+  font-size: 1rem; /* 描述字体大小 */
+  padding-top: 5px; /* 描述上方间距 */
 }
 
 .footer {

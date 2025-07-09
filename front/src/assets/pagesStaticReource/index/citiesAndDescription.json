@@ -1,0 +1,67 @@
+[
+    {
+        "title": "炎",
+        "description": "炎是位于泰拉大陆最东边的国家，疆土广阔。深入过炎国腹地的人其实并不多，但关于这个国家中奇人异事的流传从未停止。",
+        "url": "/pagesStaticReource/index/imgs/yan.png"
+    },
+    {
+        "title": "龙门",
+        "description": "龙门，炎国的移动城邦，炎国重要的商业和文化中心，位于炎国西北角，和乌萨斯城市切尔诺伯格接壤。",
+        "url": "/pagesStaticReource/index/imgs/lungmen.png"
+    },
+    {
+        "title": "卡西米尔",
+        "description": "卡西米尔，卡西米尔联合领的简称，骑士与商业之国，举办有卡西米尔骑士特别锦标赛。传统的骑士精神与利益至上的商业思想正激烈的交锋。",
+        "url": "/pagesStaticReource/index/imgs/kazimierz.png"
+    },
+    {
+        "title": "玻利瓦尔",
+        "description": "玻利瓦尔是位于泰拉大陆西北部的国家，与哥伦比亚接壤。进入结晶时代后因矿石开采范围与哥伦比亚联邦多处重叠而发生冲突。",
+        "url": "/pagesStaticReource/index/imgs/bolívar.png"
+    },
+    {
+        "title": "哥伦比亚",
+        "description": "哥伦比亚是泰拉大陆上最年轻的国家，但发展迅速，富有野心，且因对感染者相对包容的态度而吸引了大量感染者前来谋生。",
+        "url": "/pagesStaticReource/index/imgs/columbia.png"
+    },
+    {
+        "title": "拉特兰",
+        "description": "拉特兰，或称拉特兰城，是位于泰拉大陆中部的神权国家。北邻叙拉古，维多利亚和莱塔尼亚；南邻伊比利亚；东邻雷姆必拓。\n——苦难不曾沾染这片天空，这里是不被战火波及之地，是千年和平的圣城。",
+        "url": "/pagesStaticReource/index/imgs/laterano.png"
+    },
+    {
+        "title": "莱塔尼亚",
+        "description": "莱塔尼亚是位于泰拉大陆中部的君主制国家，又称莱塔尼亚帝国。莱塔尼亚北接乌萨斯，维多利亚和莱塔尼亚；西南接维多利亚；东隔叙拉古遥望卡兹戴尔。莱塔尼亚法术氛围非常浓厚，当地的源石技艺普及率极高，且多与音乐相结合，这为莱塔尼亚带来了繁荣的音乐艺术，并曾使莱塔尼亚对感染者持更宽容的态度。",
+        "url": "/pagesStaticReource/index/imgs/leithanien.png"
+    },
+    {
+        "title": "萨尔贡",
+        "description": "萨尔贡，全称萨尔贡帝国，是位于泰拉大陆上沙漠与绿洲相接处的一个现代化国家，与泰拉的大多数国家不同，除开少有的移动城市，更多的萨尔贡人生活在环境严苛的荒野和密林之中，极少与外界交流。",
+        "url": "/pagesStaticReource/index/imgs/sargon.png"
+    },
+    {
+        "title": "维多利亚",
+        "description": "维多利亚是一个君主制国家，有着古老的统治传统。国家由德拉克和阿斯兰两族统治，强调霸权与扩张，旨在建立以维多利亚为中心的世界体系，开创一个属于维多利亚的全新时代。",
+        "url": "/pagesStaticReource/index/imgs/victoria.png"
+    },
+    {
+        "title": "乌萨斯",
+        "description": "乌萨斯是一个雄踞泰拉大陆北部的君主制国家，幅员辽阔，自然环境严酷，拥有极其雄厚的军事资本。",
+        "url": "/pagesStaticReource/index/imgs/ursus.png"
+    },
+    {
+        "title": "谢拉格",
+        "description": "谢拉格是位于泰拉大陆中北部的雪山国家，地处雪境，终年落雪。",
+        "url": "/pagesStaticReource/index/imgs/kjerag.png"
+    },
+    {
+        "title": "叙拉古",
+        "description": "叙拉古，位于泰拉大陆中部，北邻莱塔尼亚，东邻卡兹戴尔与雷姆必拓，南邻拉特兰，西邻维多利亚。在叙拉古，各个家族掌握着分属于他们的移动城市。",
+        "url": "/pagesStaticReource/index/imgs/siracusa.png"
+    },
+    {
+        "title": "伊比利亚",
+        "description": "伊比利亚是位于泰拉大陆南端的沿海国家，受宗教的影响保守封闭。是泰拉大陆为数不多的临海国家，曾流传有黄金国度的美名，过去时常被与热情、活力、奢豪，以及洒满海岸的阳光联系在一起，近些年则逐渐沉寂。",
+        "url": "/pagesStaticReource/index/imgs/iberia.png"
+    }
+]
