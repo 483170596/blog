@@ -148,7 +148,7 @@ const routeToLogin = () => {
 
 .index-body {
   width: 100%;
-  height: 65%;
+  height: 73%;
   position: relative;
   overflow: hidden;
   user-select: none;
@@ -217,18 +217,19 @@ const routeToLogin = () => {
 
 .footer {
   width: 100%;
-  height: 20%;
+  height: 12%;
   background-color: #000000;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   user-select: none;
   cursor: default;
 }
 
 .diamond-wrapper {
   position: relative;
-  height: 35%;
+  height: 60%;
+  margin-bottom: 15px;
   aspect-ratio: 1 / 1;
   transform: rotate(45deg); /* 变成菱形 */
 }
@@ -253,17 +254,17 @@ const routeToLogin = () => {
   border: 3px solid #ffcc00;
   opacity: 0.4;
   animation: pulse 1s infinite;
-  z-index: -1;
+  z-index: 9999;
 }
 
 @keyframes pulse {
   0% {
     transform: scale(1);
-    opacity: 0.4;
+    opacity: 0.5;
   }
   100% {
     transform: scale(2);
-    opacity: 0;
+    opacity: 0.1;
   }
 }
 
