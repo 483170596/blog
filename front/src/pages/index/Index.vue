@@ -1,8 +1,10 @@
 <template>
   <div class="header" @click="routeToLogin">
     <div class="left">
-      <el-button class="btn" round @click="clearCache">清除缓存</el-button>
-      <el-button class="btn" round @click="checkNetwork">检测网络</el-button>
+      <el-button class="btn" round @click="clickClearCache">清除缓存</el-button>
+      <el-button class="btn" round @click="clickCheckNetwork"
+        >检测网络</el-button
+      >
       <div class="ver">Ver:{{ version }}</div>
     </div>
     <div class="right">
@@ -10,6 +12,7 @@
       <div style="width: 40px; height: 50px; display: inline-block"></div>
     </div>
   </div>
+
   <div class="index-body" @click="routeToLogin">
     <img :src="bodyRes.url" :alt="bodyRes.title" />
     <div class="overlay-text">
@@ -17,6 +20,7 @@
       <div class="text-description">{{ bodyRes.description }}</div>
     </div>
   </div>
+
   <div class="footer" @click="routeToLogin">
     <div class="diamond-wrapper">
       <div class="diamond">
@@ -24,6 +28,11 @@
       </div>
     </div>
   </div>
+
+  <ClearCacheDialog
+    :show="showClearCacheDialog"
+    @clear="clearCache"
+    @_h-d5t7gp8-s="_hD5t7gp8S" />
 </template>
 
 <script setup lang="ts">
@@ -32,9 +41,12 @@ import { httpCheckNetwork } from "../../http/httpUtils";
 import { useRouter } from "vue-router";
 import bodyStaticResource from "../../assets/pagesStaticReource/index/citiesAndDescription.json";
 import { getRandomInt } from "../../utils/common";
+import ClearCacheDialog from "./components/ClearCacheDialog.vue";
 
+// 版本号
 const version = ref("2.5.80");
 
+// 图片和文字
 const bodyResIdx = ref(getRandomInt(0, bodyStaticResource.length - 1));
 const intervalTime = 5000;
 let bodyResTimer: number | null = null;
@@ -51,11 +63,26 @@ onUnmounted(() => {
   }
 });
 
+// 清除缓存
+const showClearCacheDialog = ref(false);
+const clickClearCache = (ev: PointerEvent) => {
+  ev.stopPropagation();
+  showClearCacheDialog.value = true;
+};
 const clearCache = () => {
-  console.log("缓存已清除");
+  // todo 清除缓存逻辑
+  console.log("缓存清除");
+  showClearCacheDialog.value = false;
+};
+const _hD5t7gp8S = () => {
+  // todo 处理 _hD5t7gp8S 事件
+  console.log("_hD5t7gp8S");
+  showClearCacheDialog.value = false;
 };
 
-const checkNetwork = () => {
+// 检测网络连接
+const clickCheckNetwork = (ev: PointerEvent) => {
+  ev.stopPropagation();
   httpCheckNetwork()
     .then(() => {
       console.log("网络连接正常");
@@ -79,6 +106,8 @@ const routeToLogin = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  user-select: none;
+  cursor: default;
 }
 
 .header .left {
@@ -120,9 +149,10 @@ const routeToLogin = () => {
 .index-body {
   width: 100%;
   height: 65%;
-  /* background-color: #ffffff; */
   position: relative;
   overflow: hidden;
+  user-select: none;
+  cursor: default;
 }
 
 .index-body img {
@@ -132,13 +162,12 @@ const routeToLogin = () => {
   display: block;
 }
 
-/* 用伪元素模拟上下两端渐变遮罩 */
 .index-body::before {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  height: 3%; /* 渐变区域高度，可按需调整 */
+  height: 3%;
   pointer-events: none;
   z-index: 1;
 }
@@ -147,7 +176,7 @@ const routeToLogin = () => {
   position: absolute;
   left: 0;
   right: 0;
-  height: 20%; /* 渐变区域高度，可按需调整 */
+  height: 20%;
   pointer-events: none;
   z-index: 1;
 }
@@ -163,26 +192,27 @@ const routeToLogin = () => {
 }
 .overlay-text {
   position: absolute;
-  bottom: 0; /* 贴父组件底部 */
-  left: 10%; /* 距离左边 20% */
-  width: 80%; /* 宽度为父组件的 80% */
-  margin-bottom: 10px; /* 距离底部 10px */
-  display: flex; /* 横向布局 */
-  gap: 1rem; /* 标题和描述之间间距 */
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 1rem;
   color: white;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
-  z-index: 2; /* 确保文字在图片上方 */
+  z-index: 2;
 }
 .text-title {
-  font-size: 1.5rem; /* 标题字体大小 */
-  font-weight: bold; /* 标题加粗 */
-  width: 10%; /* 标题宽度为父组件的 50% */
-  white-space: nowrap; /* 不换行 */
-  text-align: right; /* 居中对齐 */
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 10%;
+  white-space: nowrap;
+  text-align: right;
+  align-self: center;
 }
 .text-description {
-  font-size: 1rem; /* 描述字体大小 */
-  padding-top: 5px; /* 描述上方间距 */
+  font-size: 1rem;
+  align-self: center;
 }
 
 .footer {
@@ -192,6 +222,8 @@ const routeToLogin = () => {
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
+  cursor: default;
 }
 
 .diamond-wrapper {
